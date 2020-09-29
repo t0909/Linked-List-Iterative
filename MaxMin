@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node
+{
+    public:
+    int data;
+    node* next;
+};
+int max(node* p)
+{
+    int x=INT_MIN;
+    while(p)
+    {
+        if(x<p->data)
+        x=p->data;
+        p=p->next;
+    }
+    return x;
+}
+int min(node* p)
+{
+    int x=INT_MAX;
+    while(p)
+    {
+        if(x>p->data)
+        x=p->data;
+        p=p->next;
+    }
+    return x;
+}
+int main()
+{
+    int a[]={1,2,3,4,5};
+    node* head= new node;
+    head->data=a[0];
+    head->next=nullptr;
+    node* temp;
+    node* last;
+    temp=head;
+    
+    for(int i=1;i<5;i++)
+    {
+        last=new node;
+        last->data=a[i];
+        last->next=nullptr;
+        temp->next=last;
+        temp=last;
+        
+    }
+    cout<<max(head)<<endl;
+    cout<<min(head)<<endl;
+}
