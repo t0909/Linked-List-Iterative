@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node
+{
+    public:
+    int data;
+    node* next;
+}*first;
+node* search(node* p,int key,node* first)
+{
+    node* q=nullptr;
+    while(p)
+    {
+        if(key==p->data)
+        {
+            q->next=p->next;
+            p->next=first;
+            first=p;
+            return first;
+            
+        }
+        q=p;
+        p=p->next;
+    }
+    return NULL;
+    
+}
+int main()
+{
+    int a[]={1,2,3,4,5};
+    node* head= new node;
+    head->data=a[0];
+    head->next=nullptr;
+    node* temp;
+    node* last;
+    temp=head;
+    
+    for(int i=1;i<5;i++)
+    {
+        last=new node;
+        last->data=a[i];
+        last->next=nullptr;
+        temp->next=last;
+        temp=last;
+        
+    }
+    cout<<search(head,5,head)<<endl;
+    
+}
